@@ -4,8 +4,8 @@ package com.miapp.biblioteca;
 import java.util.ArrayList;
 
 public class Usuario {
-      String nombre;
-      String id;
+      private String nombre;
+      private String id;
       private ArrayList<Libro> librosPrestados;
 
 
@@ -37,9 +37,7 @@ public class Usuario {
            return librosPrestados;
        }
 
-       public void setLibrosPrestados(ArrayList<Libro> librosPrestados) {
-        this.librosPrestados = librosPrestados;
-    }
+
 
        @Override
            public String toString() {

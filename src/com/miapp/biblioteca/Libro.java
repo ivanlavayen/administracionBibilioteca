@@ -1,11 +1,11 @@
 package com.miapp.biblioteca;
 
 public class Libro {
-    String titulo;
-    String autor;
-    String ISBN;
-    String genero;
-    boolean disponible;
+    private String titulo;
+    private String autor;
+    private String ISBN;
+    private String genero;
+    private boolean disponible;
 
     //creo el constructor
 
