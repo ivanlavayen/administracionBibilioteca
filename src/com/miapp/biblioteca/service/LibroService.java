@@ -38,6 +38,24 @@ public class LibroService {
     }
 
     //4)Borrar libro  DELETE
+    public void eliminarLibro(String nuevoTitulo, String nuevoAutor, String ISBN, String nuevoGenero) {
+        biblioteca.removeIf(libro -> libro.getISBN().equals(ISBN));
+        /*tambien se puede hacer con un for de la siguiente manera:
+        for(Libro libro:biblioteca){
+            if(libro.getISBN().equals(ISBN)){
+                biblioteca.remove(libro);
+            }
+         */
+    }
+    //buscar un libro por ISBN
+    public Libro buscarLibroUnico(String ISBN){
+        for(Libro libro:biblioteca){
+            if(libro.getISBN().equals(ISBN)){
+                return libro;
 
+            }
+        }
+        return null;
+    }
 }
 
