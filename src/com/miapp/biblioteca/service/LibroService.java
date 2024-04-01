@@ -1,10 +1,12 @@
 package com.miapp.biblioteca.service;
 
 import com.miapp.biblioteca.Libro;
+import org.w3c.dom.ls.LSOutput;
 
 import java.util.ArrayList;
 
 public class LibroService {
+
     //arreglo con la coleccion de libros
     private ArrayList<Libro> biblioteca;
 
@@ -38,7 +40,7 @@ public class LibroService {
     }
 
     //4)Borrar libro  DELETE
-    public void eliminarLibro(String nuevoTitulo, String nuevoAutor, String ISBN, String nuevoGenero) {
+    public void eliminarLibro(String titulo, String autor, String ISBN, String genero) {
         biblioteca.removeIf(libro -> libro.getISBN().equals(ISBN));
         /*tambien se puede hacer con un for de la siguiente manera:
         for(Libro libro:biblioteca){
@@ -47,15 +49,15 @@ public class LibroService {
             }
          */
     }
-    //buscar un libro por ISBN
-    public Libro buscarLibroUnico(String ISBN){
-        for(Libro libro:biblioteca){
-            if(libro.getISBN().equals(ISBN)){
-                return libro;
+    //buscar un libro por ISBN public Libro buscarLibroUnico(String ISBN){
+    //        for(Libro libro:biblioteca){
+    //            if(libro.getISBN().equals(ISBN)){
+    //                return libro;
+    //
+    //            }
+    //        }
+    //        return null;
+    //    }
 
-            }
-        }
-        return null;
-    }
 }
 
