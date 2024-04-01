@@ -1,5 +1,8 @@
 package com.miapp.biblioteca.ui;
 
+import com.miapp.biblioteca.Usuario;
+import com.miapp.biblioteca.service.UsuarioService;
+
 import java.util.Scanner;
 
 public class MenuUsuario {
@@ -23,8 +26,16 @@ public class MenuUsuario {
             char letra = Character.toLowerCase(caracterIngresado);
             switch (letra) {
                 case 'c':
-                    System.out.println("crear");
+                    Scanner scanner1 = new Scanner(System.in);
+
+                    System.out.println("Ingrese el nombre del usuario: ");
+                    String nombre = scanner1.next();
+
+                    System.out.println("Ingrese el ID del usuario: ");
+                    String id = scanner.next();
+                    UsuarioService.crearUsuario(nombre, id);
                     break;
+
                 case 'r':
                     System.out.println("leer");
                     break;

@@ -5,7 +5,7 @@ import com.miapp.biblioteca.Usuario;
 
 import java.util.ArrayList;
 public class UsuarioService {
-    private ArrayList<Usuario> usuarios;
+    private static ArrayList<Usuario> usuarios;
 
     public UsuarioService(ArrayList<Usuario> usuarios) {
         this.usuarios = usuarios;
@@ -14,7 +14,8 @@ public class UsuarioService {
     //metodos crud
 
     //crear usuario CREATE
-    public void crearUsuario(String nombre, String id){
+
+    public static void crearUsuario(String nombre, String id){
         Usuario usuarioNuevo= new Usuario(nombre,id);
         usuarios.add(usuarioNuevo);
     }
