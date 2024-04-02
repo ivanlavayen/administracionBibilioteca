@@ -13,7 +13,7 @@ public class Usuario {
        public Usuario(String nombre, String id) {
            this.nombre = nombre;
            this.id = id;
-           this.librosPrestados=new ArrayList<>();
+           //this.librosPrestados=new ArrayList<>();
        }
 
        //Getter y Setter

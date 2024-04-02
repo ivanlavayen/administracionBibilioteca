@@ -37,6 +37,7 @@ public class Main {
 
                 if (letra1 == libro) {
                       MenuLibro.Menu();
+
                 }
                 if (letra1 == usuario) {
                     MenuUsuario.Menu();

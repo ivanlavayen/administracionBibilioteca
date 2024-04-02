@@ -4,11 +4,18 @@ import com.miapp.biblioteca.Libro;
 import org.w3c.dom.ls.LSOutput;
 
 import java.util.ArrayList;
-
+//public class LibroService {
+//    private static ArrayList<Libro> biblioteca = new ArrayList<>(); // Inicializar la variable como un atributo estático
+//
+//    public static void crearLibro(String titulo, String autor, String ISBN, String genero) {
+//        Libro nuevoLibro = new Libro(titulo, autor, ISBN, genero);
+//        biblioteca.add(nuevoLibro);
+//    }
+//}
 public class LibroService {
 
     //arreglo con la coleccion de libros
-    private ArrayList<Libro> biblioteca;
+    private static ArrayList<Libro> biblioteca=new ArrayList<>();
 
     public LibroService(ArrayList<Libro> biblioteca) {
         this.biblioteca = biblioteca;
@@ -17,15 +24,16 @@ public class LibroService {
 
     //1) Crear libros   CREAT
 
-    public void crearLibro(String titulo, String autor, String ISBN, String genero) {
+    public static void crearLibro(String titulo, String autor, String ISBN, String genero) {
         Libro nuevoLibro = new Libro(titulo, autor, ISBN, genero);
         biblioteca.add(nuevoLibro);
     }
 
     //2)listar libros   READ
-    public ArrayList<Libro> getBiblioteca() {
+    public static ArrayList<Libro> getBiblioteca() {
         return biblioteca;
     }
+
 
     //3)actualizar libros  UPDATE
     public void actualizarLibro(String nuevoTitulo, String nuevoAutor, String ISBN, String nuevoGenero) {
