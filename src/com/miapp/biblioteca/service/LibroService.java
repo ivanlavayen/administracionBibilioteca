@@ -4,14 +4,7 @@ import com.miapp.biblioteca.Libro;
 import org.w3c.dom.ls.LSOutput;
 
 import java.util.ArrayList;
-//public class LibroService {
-//    private static ArrayList<Libro> biblioteca = new ArrayList<>(); // Inicializar la variable como un atributo estático
-//
-//    public static void crearLibro(String titulo, String autor, String ISBN, String genero) {
-//        Libro nuevoLibro = new Libro(titulo, autor, ISBN, genero);
-//        biblioteca.add(nuevoLibro);
-//    }
-//}
+
 public class LibroService {
 
     //arreglo con la coleccion de libros
@@ -23,7 +16,6 @@ public class LibroService {
     //metodos para trabajar con los libros de la biblioteca  CRUD
 
     //1) Crear libros   CREAT
-
     public static void crearLibro(String titulo, String autor, String ISBN, String genero) {
         Libro nuevoLibro = new Libro(titulo, autor, ISBN, genero);
         biblioteca.add(nuevoLibro);
@@ -57,15 +49,19 @@ public class LibroService {
             }
          */
     }
-    //buscar un libro por ISBN public Libro buscarLibroUnico(String ISBN){
-    //        for(Libro libro:biblioteca){
-    //            if(libro.getISBN().equals(ISBN)){
-    //                return libro;
+    //buscar un libro por ISBN
+    // public Libro buscarLibroUnico(String ISBN){
+      //    for(Libro libro:biblioteca){
+        //        if(libro.getISBN().equals(ISBN)){
+          //          return libro;
     //
     //            }
     //        }
     //        return null;
     //    }
+
+    //verificar disponibilidad
+    //public
 
 }
 

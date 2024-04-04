@@ -5,7 +5,7 @@ public class Libro {
     private String autor;
     private String ISBN;
     private String genero;
-    private boolean disponible;
+    public boolean disponible;
 
     //creo el constructor
 

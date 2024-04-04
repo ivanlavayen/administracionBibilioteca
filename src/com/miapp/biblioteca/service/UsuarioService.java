@@ -15,19 +15,19 @@ public class UsuarioService {
 
     //crear usuario CREATE
 
-    public static void crearUsuario(String nombre, String id){
-        Usuario usuarioNuevo= new Usuario(nombre,id);
+    public static void crearUsuario(String nombre, String id) {
+        Usuario usuarioNuevo = new Usuario(nombre, id);
         usuarios.add(usuarioNuevo);
     }
 
     // leer usuario READ  obtengo todos los usuarios
-    public ArrayList<Usuario>getUsuarios(){
+    public ArrayList<Usuario> getUsuarios() {
         return usuarios;
     }
 
     //actualizar usuario UPDATE
-         //actualizacion buscando por id
-    public void actualizarUsuarioPorId(String nuevoNombre,String id) {
+    //actualizacion buscando por id
+    public void actualizarUsuarioPorId(String nuevoNombre, String id) {
 
         for (Usuario usuario : usuarios) {
             if (usuario.getId().equals(id)) {
@@ -38,7 +38,7 @@ public class UsuarioService {
     }
 
     //actualizacion buscando por nombre
-    public void actualizarUsuarioPorNombre(String nombre,String nuevoId) {
+    public void actualizarUsuarioPorNombre(String nombre, String nuevoId) {
 
         for (Usuario usuario : usuarios) {
             if (usuario.getNombre().equals(nombre)) {
@@ -49,23 +49,23 @@ public class UsuarioService {
     }
 
     //borrar un usuario DELETE
-      //busqueda por id
-    public void borrarUsuarioPorId(String id){
+    //busqueda por id
+    public void borrarUsuarioPorId(String id) {
         usuarios.removeIf(usuario -> usuario.getId().equals(id));
 
     }
 
     //borrar un usuario DELETE
-      //busqueda por nombre
-    public void borrarUsuarioPorNombre(String nombre){
+    //busqueda por nombre
+    public void borrarUsuarioPorNombre(String nombre) {
         usuarios.removeIf(usuario -> usuario.getNombre().equals(nombre));
 
     }
 
     //busqueda de usuario por id
-    public Usuario buscarUsuarioPorId(String id){
-        for(Usuario usuario:usuarios){
-            if(usuario.getId().equals(id)){
+    public Usuario buscarUsuarioPorId(String id) {
+        for (Usuario usuario : usuarios) {
+            if (usuario.getId().equals(id)) {
                 return usuario;
 
             }
@@ -74,9 +74,9 @@ public class UsuarioService {
     }
 
     //busqueda usuario por nombre
-    public Usuario buscarUsuarioPorNombre(String nombre){
-        for(Usuario usuario:usuarios){
-            if(usuario.getNombre().equals(nombre)){
+    public Usuario buscarUsuarioPorNombre(String nombre) {
+        for (Usuario usuario : usuarios) {
+            if (usuario.getNombre().equals(nombre)) {
                 return usuario;
 
             }
@@ -84,4 +84,26 @@ public class UsuarioService {
         return null;
     }
 
+    //metodo para prestar libro a ususario
+    public void prestarLibro(Usuario usuario, Libro libro) {
+        //verifico disponibilidad
+        if (libro.isDisponible()) {
+            usuario.getLibrosPrestados().add(libro);
+            libro.setDisponible(false);
+        } else {
+            System.out.println("no esta el libro");
+        }
+    }
+
+
+    //ususario devuelve libro
+
+    public void devolverLibro(Usuario usuario, Libro libro) {
+        if (usuario.getLibrosPrestados().contains(libro)) {
+            usuario.getLibrosPrestados().remove(libro);
+            libro.setDisponible(true);
+        } else {
+            System.out.println("el usuario no tiene el libro mencionado");
+        }
+    }
 }
