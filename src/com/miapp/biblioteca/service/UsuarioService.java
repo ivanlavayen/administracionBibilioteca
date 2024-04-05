@@ -5,10 +5,10 @@ import com.miapp.biblioteca.Usuario;
 
 import java.util.ArrayList;
 public class UsuarioService {
-    private static ArrayList<Usuario> usuarios;
+    private static ArrayList<Usuario> usuarios=new ArrayList<>();
 
     public UsuarioService(ArrayList<Usuario> usuarios) {
-        this.usuarios = usuarios;
+        UsuarioService.usuarios = usuarios;
     }
 
     //metodos crud
@@ -21,21 +21,26 @@ public class UsuarioService {
     }
 
     // leer usuario READ  obtengo todos los usuarios
-    public ArrayList<Usuario> getUsuarios() {
+    public static ArrayList<Usuario> getUsuarios() {
         return usuarios;
     }
 
     //actualizar usuario UPDATE
     //actualizacion buscando por id
-    public void actualizarUsuarioPorId(String nuevoNombre, String id) {
 
+    public static boolean actualizarUsuarioPorId(String nuevoNombre, String id) {
+        boolean cambioRealizado = false;
         for (Usuario usuario : usuarios) {
             if (usuario.getId().equals(id)) {
                 usuario.setNombre(nuevoNombre);
+                cambioRealizado = true;
+                break;  // Salimos del bucle tras encontrar coincidencia
             }
         }
-
+        return cambioRealizado;
     }
+
+
 
     //actualizacion buscando por nombre
     public void actualizarUsuarioPorNombre(String nombre, String nuevoId) {
@@ -50,27 +55,25 @@ public class UsuarioService {
 
     //borrar un usuario DELETE
     //busqueda por id
-    public void borrarUsuarioPorId(String id) {
-        usuarios.removeIf(usuario -> usuario.getId().equals(id));
+    public static boolean borrarUsuarioPorId(String id) {
+       return usuarios.removeIf(usuario -> usuario.getId().equals(id));
 
     }
 
     //borrar un usuario DELETE
     //busqueda por nombre
-    public void borrarUsuarioPorNombre(String nombre) {
-        usuarios.removeIf(usuario -> usuario.getNombre().equals(nombre));
-
+    public static boolean borrarUsuarioPorNombre(String nombre) {
+        return usuarios.removeIf(usuario -> usuario.getNombre().equals(nombre));
     }
 
     //busqueda de usuario por id
-    public Usuario buscarUsuarioPorId(String id) {
+    public static void buscarUsuarioPorId(String id) {
         for (Usuario usuario : usuarios) {
             if (usuario.getId().equals(id)) {
-                return usuario;
+                return;
 
             }
         }
-        return null;
     }
 
     //busqueda usuario por nombre

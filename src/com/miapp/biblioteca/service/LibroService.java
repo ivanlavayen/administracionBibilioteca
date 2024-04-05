@@ -1,7 +1,6 @@
 package com.miapp.biblioteca.service;
 
 import com.miapp.biblioteca.Libro;
-import org.w3c.dom.ls.LSOutput;
 
 import java.util.ArrayList;
 
@@ -11,7 +10,7 @@ public class LibroService {
     private static ArrayList<Libro> biblioteca=new ArrayList<>();
 
     public LibroService(ArrayList<Libro> biblioteca) {
-        this.biblioteca = biblioteca;
+        LibroService.biblioteca = biblioteca;
     }
     //metodos para trabajar con los libros de la biblioteca  CRUD
 
@@ -28,7 +27,7 @@ public class LibroService {
 
 
     //3)actualizar libros  UPDATE
-    public void actualizarLibro(String nuevoTitulo, String nuevoAutor, String ISBN, String nuevoGenero) {
+    public static void actualizarLibro(String nuevoTitulo, String nuevoAutor, String ISBN, String nuevoGenero) {
         //recorro la biblioteca buscando un isbn ==
         for(Libro libro:biblioteca){
             if(libro.getISBN().equals(ISBN)){
@@ -40,7 +39,7 @@ public class LibroService {
     }
 
     //4)Borrar libro  DELETE
-    public void eliminarLibro(String titulo, String autor, String ISBN, String genero) {
+    public static void eliminarLibro(String titulo, String autor, String ISBN, String genero) {
         biblioteca.removeIf(libro -> libro.getISBN().equals(ISBN));
         /*tambien se puede hacer con un for de la siguiente manera:
         for(Libro libro:biblioteca){
@@ -50,18 +49,18 @@ public class LibroService {
          */
     }
     //buscar un libro por ISBN
-    // public Libro buscarLibroUnico(String ISBN){
-      //    for(Libro libro:biblioteca){
-        //        if(libro.getISBN().equals(ISBN)){
-          //          return libro;
-    //
-    //            }
-    //        }
-    //        return null;
-    //    }
+     public static void buscarLibroUnico(String ISBN){
+          for(Libro libro:biblioteca){
+                if(libro.getISBN().equals(ISBN)){
+                    return;
+               }
+          }
+     }
 
     //verificar disponibilidad
-    //public
+    public boolean estaDisponible(Libro libro){
+           return libro.isDisponible();
+    }
 
 }
 
