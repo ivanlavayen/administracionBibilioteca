@@ -1,11 +1,14 @@
 package com.miapp.biblioteca.ui;
 
+import com.miapp.biblioteca.Libro;
+import com.miapp.biblioteca.Usuario;
 import com.miapp.biblioteca.service.LibroService;
 import com.miapp.biblioteca.service.UsuarioService;
 
 import java.util.Scanner;
 
 
+import static com.miapp.biblioteca.service.UsuarioService.prestarLibro;
 import static com.miapp.biblioteca.ui.Inicio.menuInicio;
 
 public class MenuUsuario {
@@ -17,9 +20,11 @@ public class MenuUsuario {
         System.out.println("2-Para ver los datos de un usuario presione R");
         System.out.println("3-Para actualizar usuario U");
         System.out.println("4-para eliminar un usuario por ID presione D");
-        System.out.println("5-para eliminar un usuario por nombre presion N");
+        System.out.println("5-para eliminar un usuario por nombre presione N");
         System.out.println("6-Para buscar un usuario por ID presione B");
         System.out.println("7-Para volver a Inicio presione I");
+        System.out.println("8_Para soliciar un libro presione P");
+        System.out.println("8_Para devolver un libro presione E");
         try {
             Scanner scanner = new Scanner(System.in);
             char caracterIngresado = scanner.next().charAt(0);
@@ -34,6 +39,7 @@ public class MenuUsuario {
                     String id = scanner.next();
 
                     UsuarioService.crearUsuario(nombre, id);
+                    //informo que se ha cargado el nuevo usuario
                     System.out.println("Se ha cargado al sistema el usuario "+nombre);
                     break;
 
@@ -47,6 +53,7 @@ public class MenuUsuario {
                     String nuevoNombre= scanner1.next();
                     System.out.println("Ingrese el ID del usuario ");
                     String IdIngresado=scanner1.next();
+                    //verifico que se ha efectuado el cambio y lo informo
                    if(UsuarioService.actualizarUsuarioPorId(nuevoNombre, IdIngresado)){
                        System.out.println("El usuario se actualizo correctamente");
 
@@ -59,6 +66,7 @@ public class MenuUsuario {
                 case 'd'://eliminar un usuario dado un id
                     System.out.println("Ingrese el id del Usuario a eliminar");
                     String usuarioEliminar=scanner1.next();
+
                     if(UsuarioService.borrarUsuarioPorId(usuarioEliminar)){
                         System.out.println("El usuario con el Id "+usuarioEliminar+" ha sido eliminado");
                     }
@@ -71,6 +79,7 @@ public class MenuUsuario {
                 case 'n'://eliminar un usario por el nombre
                     System.out.println("Ingrese el nombre del Usuario a eliminar");
                     String nombreEliminar=scanner1.next();
+                    //verifico si el usuario fue eliminado
                    if( UsuarioService.borrarUsuarioPorNombre(nombreEliminar)){
                        System.out.println(nombreEliminar+ " ha sido eliminado");
                    }
@@ -85,6 +94,26 @@ public class MenuUsuario {
                     System.out.println("ingrese Id del Usuario");
                     String idUsuario= scanner.next();
                     UsuarioService.buscarUsuarioPorId(idUsuario);
+                    break;
+
+                case 'p':
+                    System.out.println("Ingrese el usuario");
+                    String nombre1=scanner.next();
+                    System.out.println("Ingrese id de ususario");
+                    String idUsuario1=scanner.next();
+                    System.out.println("Ingrese titulo");
+                    String titulo=scanner.next();
+                    System.out.println("Ingrese autor");
+                    String autor=scanner.next();
+                    System.out.println("Ingrese ISBN");
+                    String ISBN=scanner.next();
+                    System.out.println("Ingrese genero");
+                    String genero= scanner.next();
+                    Usuario usuario = new Usuario(nombre1, idUsuario1);
+                    Libro libro = new Libro(titulo, autor,ISBN,genero);
+
+                    prestarLibro(usuario, libro);
+
                     break;
 
                 case 'i':

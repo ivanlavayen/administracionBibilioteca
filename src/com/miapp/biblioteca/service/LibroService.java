@@ -27,26 +27,34 @@ public class LibroService {
 
 
     //3)actualizar libros  UPDATE
-    public static void actualizarLibro(String nuevoTitulo, String nuevoAutor, String ISBN, String nuevoGenero) {
+    public static boolean actualizarLibro(String nuevoTitulo, String nuevoAutor, String ISBN, String nuevoGenero) {
         //recorro la biblioteca buscando un isbn ==
+        boolean cambioRealizado=false;
         for(Libro libro:biblioteca){
             if(libro.getISBN().equals(ISBN)){
                 libro.setTitulo(nuevoTitulo);
                 libro.setAutor(nuevoAutor);
                 libro.setGenero(nuevoGenero);
+                cambioRealizado=true;
             }
         }
+        return cambioRealizado;
     }
 
     //4)Borrar libro  DELETE
-    public static void eliminarLibro(String titulo, String autor, String ISBN, String genero) {
-        biblioteca.removeIf(libro -> libro.getISBN().equals(ISBN));
+    public static boolean eliminarLibro(String titulo, String autor, String ISBN, String genero) {
+        return biblioteca.removeIf(libro -> libro.getISBN().equals(ISBN)
+                                         &&(libro.getAutor().equals(autor)
+                                         &&(libro.getTitulo().equals(titulo))));
+        //para eliminar solicito que sea igual al menos el isbn,autor y titulo.
+        //si se elimino el libro devuelve true, si no false
         /*tambien se puede hacer con un for de la siguiente manera:
         for(Libro libro:biblioteca){
             if(libro.getISBN().equals(ISBN)){
                 biblioteca.remove(libro);
             }
          */
+
     }
     //buscar un libro por ISBN
      public static void buscarLibroUnico(String ISBN){

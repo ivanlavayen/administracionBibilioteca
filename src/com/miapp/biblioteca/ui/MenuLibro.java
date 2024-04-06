@@ -65,7 +65,12 @@ public class MenuLibro {
                     System.out.println(("ingrese genero"));
                     String nuevoGenero = scanner.next();
 
-                    LibroService.actualizarLibro( nuevoTitulo,  nuevoAutor, nuevoIsbn,  nuevoGenero);
+                    if(LibroService.actualizarLibro( nuevoTitulo,  nuevoAutor, nuevoIsbn,  nuevoGenero)){
+                        System.out.println("Se ha actulizado el libro correctamente");
+                    }
+                    else{
+                        System.out.println("No existe el ISBN ingresado. No se realizo ningun cambio");
+                    }
 
                     break;
 
@@ -83,7 +88,12 @@ public class MenuLibro {
                     System.out.println(("ingrese genero"));
                     String eliminarGenero = scanner.next();
 
-                    LibroService.eliminarLibro( eliminarTitulo,eliminarAutor,eliminarIsbn,eliminarGenero);
+                    if(LibroService.eliminarLibro( eliminarTitulo,eliminarAutor,eliminarIsbn,eliminarGenero)){
+                        System.out.println("el libro "+eliminarTitulo+" ha sido eliminado de la biblioteca");
+                    }
+                    else{
+                        System.out.println("Ha ingresado un dato incorrecto, no se elimnio ningun libro");
+                    }
 
                     break;
 

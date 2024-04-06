@@ -29,6 +29,9 @@ public class UsuarioService {
     //actualizacion buscando por id
 
     public static boolean actualizarUsuarioPorId(String nuevoNombre, String id) {
+        //creo una variable de tipo boolean para devolver si el cambio se efectuo. Si
+        //el cambio se efecuto cambiorealizado se vuelve true. Este valor lo toma el case 'u' en
+        //menuUsuario para informar si se efectuo el cambio o no.
         boolean cambioRealizado = false;
         for (Usuario usuario : usuarios) {
             if (usuario.getId().equals(id)) {
@@ -62,6 +65,7 @@ public class UsuarioService {
 
     //borrar un usuario DELETE
     //busqueda por nombre
+   // metodo boolean para que me devuelva true o false e informar en el menu si se efectuo la eliminacion
     public static boolean borrarUsuarioPorNombre(String nombre) {
         return usuarios.removeIf(usuario -> usuario.getNombre().equals(nombre));
     }
@@ -88,10 +92,11 @@ public class UsuarioService {
     }
 
     //metodo para prestar libro a ususario
-    public void prestarLibro(Usuario usuario, Libro libro) {
+    public static void prestarLibro(Usuario usuario, Libro libro) {
         //verifico disponibilidad
         if (libro.isDisponible()) {
             usuario.getLibrosPrestados().add(libro);
+            System.out.println("libro prestado");
             libro.setDisponible(false);
         } else {
             System.out.println("no esta el libro");
