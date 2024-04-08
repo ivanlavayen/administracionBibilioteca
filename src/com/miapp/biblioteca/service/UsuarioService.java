@@ -5,8 +5,8 @@ import com.miapp.biblioteca.Usuario;
 
 import java.util.ArrayList;
 public class UsuarioService {
-    private static ArrayList<Usuario> usuarios=new ArrayList<>();
-
+   public static ArrayList<Usuario> usuarios=new ArrayList<>();
+   // private static ArrayList<Usuario>prestados=new ArrayList<>();
     public UsuarioService(ArrayList<Usuario> usuarios) {
         UsuarioService.usuarios = usuarios;
     }
@@ -71,13 +71,14 @@ public class UsuarioService {
     }
 
     //busqueda de usuario por id
-    public static void buscarUsuarioPorId(String id) {
+    public static String buscarUsuarioPorId(String id) {
         for (Usuario usuario : usuarios) {
             if (usuario.getId().equals(id)) {
-                return;
+                return id;
 
             }
         }
+        return null;
     }
 
     //busqueda usuario por nombre
@@ -92,26 +93,29 @@ public class UsuarioService {
     }
 
     //metodo para prestar libro a ususario
-    public static void prestarLibro(Usuario usuario, Libro libro) {
+    public static boolean prestarLibro(Usuario usuario, Libro libro) {
+        boolean prestar = false;
         //verifico disponibilidad
         if (libro.isDisponible()) {
             usuario.getLibrosPrestados().add(libro);
-            System.out.println("libro prestado");
             libro.setDisponible(false);
-        } else {
-            System.out.println("no esta el libro");
-        }
+            prestar=true;
+             }
+        return prestar;
     }
 
 
     //ususario devuelve libro
 
-    public void devolverLibro(Usuario usuario, Libro libro) {
+    public static boolean devolverLibro(Usuario usuario, Libro libro) {
+        boolean devolver=false;
         if (usuario.getLibrosPrestados().contains(libro)) {
             usuario.getLibrosPrestados().remove(libro);
             libro.setDisponible(true);
-        } else {
-            System.out.println("el usuario no tiene el libro mencionado");
+
         }
+        devolver=true;
+        return devolver;
     }
+
 }

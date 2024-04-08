@@ -7,12 +7,12 @@ public class Inicio {
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.println("MENU INICIO");
-            char libro = 'l';
-            char usuario = 'u';
-            char salida= 's';
-            System.out.println("1- Para  acceder a menu Biblioteca presione L");
-            System.out.println("2- Para acceder a menu usuario presione U");
-            System.out.println("3- Para salir del sistema presione S");
+            char libro = '1';
+            char usuario = '2';
+            char salida= '3';
+            System.out.println("1- Para  acceder a menu Biblioteca  ");
+            System.out.println("2- Para acceder a menu Usuario  ");
+            System.out.println("3- Para salir del sistema  ");
             char caracterIngresado1 = scanner.next().charAt(0);
             char letra1 = Character.toLowerCase(caracterIngresado1);
 
@@ -25,7 +25,7 @@ public class Inicio {
             }
             else if(letra1==salida){
                 System.out.println("Salida exitosa");
-                System.exit(0);
+                System.exit(0);//para terminar el proceso
             }
 
         } catch (Exception e) {

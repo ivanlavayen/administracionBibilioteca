@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class Usuario {
       private String nombre;
-      private String id;
-      private ArrayList<Libro> librosPrestados;
+      private  String id;
+      private ArrayList<Libro> librosPrestados=new ArrayList<>();
 
 
       //constructor
@@ -25,7 +25,7 @@ public class Usuario {
            this.nombre = nombre;
        }
 
-       public String getId() {
+       public  String getId() {
            return id;
        }
 
@@ -34,12 +34,15 @@ public class Usuario {
        }
 
        public ArrayList <Libro> getLibrosPrestados(){
+
            return librosPrestados;
        }
 
+    public void setLibrosPrestados(ArrayList<Libro> librosPrestados) {
+        this.librosPrestados = librosPrestados;
+    }
 
-
-       @Override
+    @Override
            public String toString() {
                return "Usuario{" +
                        "nombre='" + nombre + '\'' +

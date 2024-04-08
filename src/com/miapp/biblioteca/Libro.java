@@ -36,7 +36,7 @@ public class Libro {
         this.autor = autor;
     }
 
-    public String getISBN() {
+    public  String getISBN() {
         return ISBN;
     }
 
@@ -61,7 +61,7 @@ public class Libro {
     }
 
 
-    //metodos y funciones
+
 
 
     @Override
